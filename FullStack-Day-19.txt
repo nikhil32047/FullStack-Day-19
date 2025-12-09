@@ -1,0 +1,41 @@
+Day 19:
+==========
+
+1) Local Variables in Functions
+======================================
+A local variable is a variable declared inside a function.
+It is accessible only within that function and is destroyed once the function ends.
+
+✔️ Example:
+def show():
+    x = 10   # local variable
+    print("Inside:", x)
+
+show()
+print(x)   # ❌ Error: x is not defined
+
+📌 Key Points:
+Local variables exist only during the function call.
+They cannot be accessed from outside the function.
+They have the highest priority inside their function’s scope.
+
+
+2) Nonlocal Variables in Functions
+===========================================
+nonlocal is used inside nested (inner) functions to modify a variable from the outer function’s scope (but not global scope).
+
+✔️ Example:
+def outer():
+    x = 5
+    def inner():
+        nonlocal x   # refers to outer's x
+        x += 5
+    inner()
+    print(x)
+
+outer()   # Output: 10
+
+📌 Key Points:
+Used only inside nested functions.
+Helps inner function modify outer function variables.
+Cannot access global variables (use global for that).
